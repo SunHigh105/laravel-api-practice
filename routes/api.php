@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::controller(OrderController::class)->group(function () {
-    Route::get('orders/get', 'get');
+    Route::get('order/{id}', 'get');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
