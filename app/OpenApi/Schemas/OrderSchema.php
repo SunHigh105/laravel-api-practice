@@ -21,6 +21,28 @@ class OrderSchema extends SchemaFactory implements Reusable
         return Schema::object('Order')
             ->properties(
                 Schema::string('id')
+                    ->description('Order id')
+                    ->example('1'),
+                Schema::string('code')
+                    ->description('Order code')
+                    ->example('0000001'),
+                Schema::string('date')
+                    ->description('Order date (yyyymmdd hhmmss)')
+                    ->example('20221018 222630'),
+                Schema::array('products')->items(
+                    Schema::object()
+                        ->properties(
+                            Schema::string('name')
+                                ->description('Product name')
+                                ->example('iPad Air 64GB'),
+                            Schema::integer('count')
+                                ->description('Product count')
+                                ->example(1),
+                            Schema::integer('price')
+                                ->description('Product price')
+                                ->example(45000)
+                        )
+                )
             );
     }
 }

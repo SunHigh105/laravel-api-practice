@@ -2,6 +2,7 @@
 
 namespace App\OpenApi\Responses;
 
+use App\OpenApi\Schemas\OrderSchema;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use Vyuldashev\LaravelOpenApi\Factories\ResponseFactory;
@@ -12,7 +13,7 @@ class OrderResponse extends ResponseFactory
     {
         return Response::ok()->description('Successful response')
             ->content(
-                // MediaType::json()->schema()
+                MediaType::json()->schema(OrderSchema::ref())
             );
     }
 }
