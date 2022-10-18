@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\OpenApi\RequestBodies\GetOrderRequestBody;
+use App\OpenApi\Parameters\GetOrderParameters;
 use App\OpenApi\Responses\OrderResponse;
 use Illuminate\Http\Request;
 use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
@@ -16,7 +16,7 @@ class OrderController extends Controller
      * Return order
      */
     #[OpenApi\Operation(method: 'GET')]
-    #[OpenApi\RequestBody(factory: GetOrderRequestBody::class)]
+    #[OpenApi\Parameters(factory: GetOrderParameters::class)]
     #[OpenApi\Response(factory: OrderResponse::class)]
     public function get(Request $request)
     {
