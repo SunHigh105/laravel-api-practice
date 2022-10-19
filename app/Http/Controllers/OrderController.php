@@ -11,9 +11,17 @@ use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
 class OrderController extends Controller
 {
     /**
-     * Get order
-     * 
-     * Return order
+     * @OA\Get(
+     *     path="/order",
+     *     tags={"order"},
+     *     summary="Get Order",
+     *     description="Return order.",
+     *     operationId="getOrder",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation"
+     *     ),
+     * )
      */
     #[OpenApi\Operation(method: 'GET')]
     #[OpenApi\Parameters(factory: GetOrderParameters::class)]
