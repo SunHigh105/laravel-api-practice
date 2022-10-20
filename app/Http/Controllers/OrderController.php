@@ -31,4 +31,20 @@ class OrderController extends Controller
         // 
         return 'hoge';
     }
+
+    /**
+     * Register order
+     */
+    public function register()
+    {
+
+    }
+
+    /**
+     * Cancel order
+     */
+    public function cancel()
+    {
+
+    }
 }
