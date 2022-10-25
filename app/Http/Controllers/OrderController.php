@@ -3,22 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
 class OrderController extends Controller
 {
-    /**
-     * @OA\Get(
-     *     path="/order",
-     *     tags={"order"},
-     *     summary="Get Order",
-     *     description="Return order.",
-     *     operationId="getOrder",
-     *     @OA\Response(
-     *         response=200,
-     *         description="successful operation."
-     *     ),
-     * )
-     */
+    #[OA\Get(
+        path: '/order/{id}',
+        tags: ['Order'],
+        parameters: [
+            new OA\Parameter(
+                name: 'id',
+                description: 'Order id',
+                required: true
+            )
+        ],
+        summary: 'Get Order',
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: 'Successfully operation.',
+                content: new OA\JsonContent(
+                    // TODO
+                )
+            )
+        ]
+    )]
     public function get(Request $request)
     {
         // 
