@@ -23,7 +23,7 @@ class OrderController extends Controller
                 response: 200,
                 description: 'Successfully operation.',
                 content: new OA\JsonContent(
-                    // TODO
+                    ref: '#/components/schemas/Order'
                 )
             )
         ]
