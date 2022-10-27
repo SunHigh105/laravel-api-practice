@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Responses;
 
+use App\Models\ProductItem;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\Items;
 
@@ -21,27 +22,26 @@ class Order
     type: 'array',
     description: 'Product list',
     items: new Items(
-      properties: [
-        new OA\Property(
-          property: 'name',
-          type: 'string',
-          description: 'Product name',
-          example: 'iPhone 13'
-        ),
-        new OA\Property(
-          property: 'count',
-          type: 'int',
-          description: 'Product count',
-          example: 1
-        ),
-        new OA\Property(
-          property: 'price',
-          type: 'int',
-          description: 'Product price',
-          example: 87000
-        )
-      ]  
+      ref: '#/components/schemas/ProductItem',
     )
   )]
   public array $products;
+
+  public function __construct(
+    string $id,
+    array $products
+  )
+  {
+    
+  }
+
+  public function getId(): string
+  {
+    return $this->id;
+  }
+
+  public function getProducts(): array
+  {
+    return $this->products;
+  }
 }
