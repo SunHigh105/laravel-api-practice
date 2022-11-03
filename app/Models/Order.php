@@ -19,6 +19,14 @@ class Order
   )]
   private string $orderId;
 
+  /** @var User $user */
+  #[OA\Property(
+    type: 'User',
+    description: 'address',
+    ref: '#/components/schemas/User'
+  )]
+  private User $user;
+
   /** @var Address $address */
   #[OA\Property(
     type: 'Address',
@@ -35,7 +43,15 @@ class Order
       ref: '#/components/schemas/OrderDetail',
     )
   )]
-  public array $products;
+  public array $orderDetails;
+
+  /** @var array $orderDetails */
+  #[OA\Property(
+    type: 'Receipt',
+    description: 'Order receipt',
+    ref: '#/components/schemas/Receipt',
+  )]
+  public Receipt $receipt;
 
   public function __construct(
     string $id,
