@@ -11,11 +11,6 @@ class User
     private int $id;
 
     /** @var string $name */
-    #[OA\Property(
-        type: 'string',
-        description: 'user name',
-        example: 'ダミー 太郎'
-    )]
     private string $name;
 
     private Date $birthday;

@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Responses;
 
 use App\Models\Address;
+use App\Models\DeliveryAddress;
+use App\Models\Receipt;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\Items;
 
 #[OA\Schema()]
-class Order
+class OrderResponse
 {
   private int $id;
 
@@ -19,21 +21,13 @@ class Order
   )]
   private string $orderId;
 
-  /** @var User $user */
+  /** @var DeliveryAddress $deliveryAddress */
   #[OA\Property(
-    type: 'User',
-    description: 'address',
-    ref: '#/components/schemas/User'
+    type: 'DeliveryAddress',
+    description: 'Delivery address',
+    ref: '#/components/schemas/DeliveryAddress'
   )]
-  private User $user;
-
-  /** @var Address $address */
-  #[OA\Property(
-    type: 'Address',
-    description: 'address',
-    ref: '#/components/schemas/Address'
-  )]
-  private Address $address;
+  private DeliveryAddress $deliveryAddress;
 
   /** @var array $orderDetails */
   #[OA\Property(
@@ -54,9 +48,10 @@ class Order
   public Receipt $receipt;
 
   public function __construct(
-    string $id,
-    Address $address,
-    array $orderDetails
+    string $orderId,
+    DeliveryAddress $deliveryAddress,
+    array $orderDetails,
+    Receipt $receipt
   )
   {
     
