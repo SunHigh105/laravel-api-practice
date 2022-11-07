@@ -5,7 +5,7 @@ namespace App\Models;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema()]
-class ProductItem
+class Product
 {
     /** @var string $name */
     #[OA\Property(
@@ -16,14 +16,14 @@ class ProductItem
     )]
     private readonly string $name;
 
-    /** @var int $count */
+    /** @var string $description */
     #[OA\Property(
-        property: 'count',
-        type: 'int',
-        description: 'Product count',
+        property: 'description',
+        type: 'string',
+        description: 'Product desctiption',
         example: 1
     )]
-    private readonly int $count;
+    private readonly string $description;
     
     /** @var int $price */
     #[OA\Property(
@@ -36,11 +36,16 @@ class ProductItem
     
     public function __construct(
         string $name,
+        string $description,
         int $count,
-        int $price
     )
     {
         
+    }
+
+    public function getProduct(): self
+    {
+        return $this;
     }
 
     public function getName(): string
@@ -48,9 +53,9 @@ class ProductItem
         return $this->name;
     }
 
-    public function getCount(): int
+    public function getDesctiption(): int
     {
-        return $this->count;
+        return $this->description;
     }
 
     public function getPrice(): int

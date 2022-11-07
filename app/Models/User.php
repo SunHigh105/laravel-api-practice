@@ -2,43 +2,28 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Date;
+use OpenApi\Attributes as OA;
 
-class User extends Authenticatable
+#[OA\Schema()]
+class User
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    private int $id;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    /** @var string $name */
+    private string $name;
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    private Date $birthday;
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    private int $phoneNumber;
+
+    public function __construct(
+        int $id,
+        string $name,
+        Date $birthday,
+        int $phoneNumber
+    )
+    {
+        
+    }
 }
