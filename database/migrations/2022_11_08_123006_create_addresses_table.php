@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->timestamps();
 
+            $table->unique('address_id', 'uk_addresses');
             $table->foreign('user_id')->references('user_id')->on('users');
         });
     }

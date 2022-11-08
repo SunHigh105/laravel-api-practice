@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('distributer');
             $table->integer('price');
             $table->timestamps();
+
+            $table->unique('product_id', 'uk_products');
         });
     }
 

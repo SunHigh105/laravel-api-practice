@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('order_id');
             $table->string('product_id');
-            $table->int('count');
+            $table->integer('count');
             $table->timestamps();
 
             $table->foreign('order_id')->references('order_id')->on('orders');
