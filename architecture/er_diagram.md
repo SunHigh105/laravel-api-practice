@@ -3,30 +3,37 @@ erDiagram
 
 products {
   int id
+  string product_id
   string name
   string description
+  string distributer
   int price
 }
 
 users {
   int id
+  string user_id
   string name
   date birthday
-  int phone_number
+  string phone_number
+  string email
+  timestamp email_verified_at
+  string password
 }
 
 addresses {
   int id
-  int user_id
-  int post_code
+  string address_id
+  string user_id FK "users.user_id"
+  string post_code
   string address
 }
 
 orders {
   int id
-  string order_no
-  int user_id
-  int address_id
+  string order_id
+  string user_id FK "users.user_id"
+  string address_id FK "addresses.address_id"
   int delivery_charge
   int fee
   int discount
@@ -37,8 +44,8 @@ orders {
 
 order_details {
   int id
-  int order_id
-  int product_id
+  string order_id FK "orders.order_id"
+  string product_id FK "products.product_id"
   int count
 }
 
