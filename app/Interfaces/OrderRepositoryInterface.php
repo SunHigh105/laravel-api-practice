@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface OrderRepositoryInterface
 {
-    // TODO
+    public function getOrderById(string $orderId);
 }
