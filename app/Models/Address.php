@@ -7,8 +7,8 @@ use OpenApi\Attributes as OA;
 #[OA\Schema()]
 class Address
 {
-    private int $id;
-    private string $userId;
+    private readonly int $id;
+    private readonly string $userId;
 
     /** @var string $postCode */
     private readonly string $postCode;
@@ -23,11 +23,25 @@ class Address
         string $address
     )
     {
-        
+        $this->id = $id;
+        $this->userId = $userId;
+        $this->postCode = $postCode;
+        $this->address = $address;
     }
 
-    public function getAddress(): self
+    public function getUserId(): string
     {
-        return $this;
+        return $this->userId;
     }
+
+    public function getPostCode(): string
+    {
+        return $this->postCode;
+    }
+
+    public function getAddress(): string
+    {
+        return $this->address;
+    }
+
 }

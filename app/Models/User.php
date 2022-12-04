@@ -2,28 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema()]
-class User
+class User extends Model
 {
-    private int $id;
+    use HasFactory;
 
-    /** @var string $name */
-    private string $name;
+    protected $table = 'users';
 
-    private Date $birthday;
+    // private int $id;
 
-    private int $phoneNumber;
+    // /** @var string $name */
+    // private string $name;
 
-    public function __construct(
-        int $id,
-        string $name,
-        Date $birthday,
-        int $phoneNumber
-    )
-    {
+    // private Date $birthday;
+
+    // private int $phoneNumber;
+
+    // public function __construct(
+    //     int $id,
+    //     string $name,
+    //     Date $birthday,
+    //     int $phoneNumber
+    // )
+    // {
         
-    }
+    // }
 }
