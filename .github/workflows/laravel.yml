@@ -42,7 +42,7 @@ jobs:
           ${{ runner.os }}-composer-
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: composer install -n --prefer-dist
+      run: composer update && composer install -n --prefer-dist
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Generate key
