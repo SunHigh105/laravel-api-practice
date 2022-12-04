@@ -1,4 +1,4 @@
-name: Laravel
+name: Laravel sail
 
 on:
   push:
@@ -10,9 +10,9 @@ jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./laravel-api-practice
+    # defaults:
+    #   run:
+    #     working-directory: ./laravel-api-practice
 
     steps:
       - uses: actions/checkout@v3
