@@ -21,13 +21,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Copy env.example
+        run: cp .env.example .env
 
       - name: Start MySQL service
         run: docker-compose up -d mysql
 
       - name: Build and run tests
         run: |
-          cp .env.example .env
           docker-compose run --rm laravel.test php artisan key:generate
           docker-compose run --rm laravel.test composer install --no-interaction
           docker-compose run --rm laravel.test php artisan migrate --env=testing
